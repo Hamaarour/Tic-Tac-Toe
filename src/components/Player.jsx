@@ -4,9 +4,13 @@ import React, { useState } from "react";
 
 export const Player = ({ name, symbol }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [playerName, setPlayerName] = useState(name);
 
+  const editName = (e) => {
+    setPlayerName(e.target.value);
+  };
   const handleEdit = () => {
-    setIsEditing(true);
+    setIsEditing((isEditing) => !isEditing);
   };
 
   return (
@@ -18,14 +22,15 @@ export const Player = ({ name, symbol }) => {
             type="text"
             defaultValue={name}
             required
+            onChange={editName}
           />
         ) : (
-          <span className="player-name">{name}</span>
+          <span className="player-name">{playerName}</span>
         )}
         <span className="player-score">{symbol}</span>
       </span>
       <button className="btn-edit" onClick={handleEdit}>
-        Edit
+        {isEditing ? "Save" : "Edit"}
       </button>
     </li>
   );

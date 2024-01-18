@@ -151,6 +151,8 @@ ol {
   animation: pulse-text-size 2s infinite ease-out;
 }
 
+
+
 #game-board {
   display: flex;
   flex-wrap: wrap;
